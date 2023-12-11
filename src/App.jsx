@@ -13,6 +13,14 @@ import * as THREE from 'three';
 import { ZoomIn } from "./ZoomIn"; 
 import { ZoomOut } from "./ZoomOut";
 import CameraControls from "camera-controls";
+import ArrowUp from "./assets/topA.png";
+import HandUp from "./assets/up.png";
+import ArrowDown from "./assets/downa.png";
+import HandDown from "./assets/down.png";
+import ArrowRight from "./assets/righta.png";
+import HandRight from "./assets/right.png";
+import ArrowLeft from "./assets/lefta.png";
+import HandLeft from "./assets/left.png";
 CameraControls.install({THREE:THREE});
 
 
@@ -322,23 +330,23 @@ function App() {
 
  style={{position:"absolute", marginTop:"8px", marginLeft:"8px" , opacity:"70%"}}>
    <div className="handup">
-  <img src="./up.png" alt="handUp" width={35} height={35}/>
-  <img src="./topA.png" alt="handUp" width={29} height={29} style={{marginLeft:"10px"}}/>
+  <img src={HandUp} alt="handUp" width={35} height={35}/>
+  <img src={ArrowUp} alt="handUp" width={29} height={29} style={{marginLeft:"10px"}}/>
   </div>
 
   <div className="handdown" style={{marginTop:"8px"}}>
-  <img src="./down.png" alt="handUp" width={35} height={35}/>
-  <img src="./downa.png" alt="handUp" width={29} height={30} style={{marginLeft:"10px"}}/>
+  <img src={HandDown} alt="handUp" width={35} height={35}/>
+  <img src={ArrowDown} alt="handUp" width={29} height={30} style={{marginLeft:"10px"}}/>
   </div>
        
   <div className="handleft" style={{marginTop:"8px"}}>
-  <img src="./left.png" alt="handUp" width={35} height={35}/>
-  <img src="./lefta.png" alt="handUp" width={29} height={30} style={{marginLeft:"10px"}}/>
+  <img src={HandLeft} alt="handUp" width={35} height={35}/>
+  <img src={ArrowLeft} alt="handUp" width={29} height={30} style={{marginLeft:"10px"}}/>
   </div>
 
   <div className="handright" style={{marginTop:"8px"}}>
-  <img src="./right.png" alt="handUp" width={35} height={35}/>
-  <img src="./righta.png" alt="handUp" width={29} height={30} style={{marginLeft:"10px"}}/>
+  <img src={HandRight} alt="handUp" width={35} height={35}/>
+  <img src={ArrowRight} alt="handUp" width={29} height={30} style={{marginLeft:"10px"}}/>
   </div>
 </div>
 ): null}
