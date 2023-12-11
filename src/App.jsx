@@ -90,7 +90,7 @@ function App() {
       }
     }
   };
-  
+
   const handDetectionResult = async (hand) => {
     if (hand.length > 0) {
       const GE = new fp.GestureEstimator([
