@@ -383,7 +383,7 @@ function App() {
         transform: "scaleX(-1)"
       }}
     />
-    )};
+    )}
 
     <div id="webglviewer" style={{ width: '100%', height:"100vh", marginTop:"-2.4%"}}/>
     </>
