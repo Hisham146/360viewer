@@ -90,7 +90,7 @@ function App() {
       }
     }
   };
-
+  
   const handDetectionResult = async (hand) => {
     if (hand.length > 0) {
       const GE = new fp.GestureEstimator([
@@ -295,14 +295,50 @@ function App() {
   };
 
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      createMeshWithMaterial(URL.createObjectURL(file));
-      setSelectedFile(file);
-    }
-  };
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     createMeshWithMaterial(URL.createObjectURL(file));
+  //     setSelectedFile(file);
+  //   }
+  // };
 
+
+  function handleFileChange() {
+    const fileInput = document.getElementById("select-file-input");
+    const tempselectedFile = fileInput.files[0];
+  
+    if (tempselectedFile) {
+      const img = new Image();
+      img.src = URL.createObjectURL(tempselectedFile);
+  
+      img.onload = function () {
+        const width = img.width;
+        const height = img.height;
+  
+        // Adjust the threshold as needed for what you consider a panoramic image
+        const panoramicThreshold = 1.73;
+  
+
+        if(width>height){
+          if (width / height > panoramicThreshold) {
+            createMeshWithMaterial(URL.createObjectURL(tempselectedFile));
+            setSelectedFile(tempselectedFile);
+          } else {
+            console.log("Please choose a panaromic image");
+            alert("Please choose a panoramic image.");
+            fileInput.value = "";
+          }
+      }
+      else {
+        console.log("Please choose a panaromic image");
+        alert("Please choose a panoramic image.");
+        fileInput.value = "";
+      }
+    }
+  }
+}
+  
  const GestureMode =()=> {
   if (selectedMode === 'Enable Gestures') {
     setSelectedMode('Disable Gestures');
@@ -322,8 +358,6 @@ function App() {
   </label>
 </div>
 
-
-{/* <div className="Guideline" id="Guidlines gestures" style={{position:"absolute", color:"white", marginBottom:"10px"}}> Gestures</div> */}
 
 {selectedMode === 'Enable Gestures' ? (
 <div id="Guidlines gestures" className="Guidelines"
@@ -364,7 +398,7 @@ function App() {
         </button>
         <button id="GestureMode" className="waves-effect waves-light btn" onClick={GestureMode} 
         style={{position:"relative", marginTop:"4px", fontWeight:"bold",
-        backgroundColor: selectedMode === 'Enable Gestures' ? 'red' : 'green', color: 'white',
+        backgroundColor: selectedMode === 'Enable Gestures' ? 'red' : 'green', color: 'white'
         }}>
            { selectedMode === 'Enable Gestures' ? 'Disable Gestures' : 'Enable Gestures'}
         </button>
