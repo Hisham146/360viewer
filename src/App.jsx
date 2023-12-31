@@ -33,7 +33,6 @@ function App() {
   const controlsRef = useRef(null);
   const meshRef = useRef(null);
   const webcamRef = useRef(null);
-  const [selectedFile, setSelectedFile] = useState(null);
   const finalGesture = useRef(null);
   const [directionDecision, setDirectionDecision] = useState(null);
   const horizontalMoveRef = useRef(0);
@@ -319,7 +318,6 @@ function App() {
         if(width>height){
           if (width / height > panoramicThreshold) {
             createMeshWithMaterial(URL.createObjectURL(tempselectedFile));
-            setSelectedFile(tempselectedFile);
           } else {
             console.log("Please choose a panaromic image");
             alert("Please choose a panoramic image.");
