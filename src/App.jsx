@@ -21,6 +21,8 @@ import ArrowRight from "./assets/righta.png";
 import HandRight from "./assets/right.png";
 import ArrowLeft from "./assets/lefta.png";
 import HandLeft from "./assets/left.png";
+import Scene1 from "./assets/Scene.jpg"
+
 CameraControls.install({THREE:THREE});
 
 
@@ -101,8 +103,9 @@ function App() {
         ZoomIn,
         ZoomOut
       ]);
-      const gesture = await GE.estimate(hand[0].landmarks, 4);
-     // console.log(gesture.gestures);
+
+      const gesture = GE.estimate(hand[0].landmarks, 4);
+
       if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
         let highestScore = 0;
         let highestScoreGestureName = '';
@@ -166,6 +169,7 @@ function App() {
       cameraRef.current = camera;
       controlsRef.current = controls;
 
+      createMeshWithMaterial(Scene1);
       animate();
     };
 
@@ -295,14 +299,6 @@ function App() {
   };
 
 
-  // const handleFileChange = (event) => {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     createMeshWithMaterial(URL.createObjectURL(file));
-  //     setSelectedFile(file);
-  //   }
-  // };
-
 
   function handleFileChange() {
     const fileInput = document.getElementById("select-file-input");
@@ -405,7 +401,6 @@ function App() {
     </div>
 
 
-{selectedFile && (
      <Webcam
       ref={webcamRef}
       style={{
@@ -417,7 +412,7 @@ function App() {
         transform: "scaleX(-1)"
       }}
     />
-    )}
+   
 
     <div id="webglviewer" style={{ width: '100%', height:"100vh", marginTop:"-2.4%"}}/>
     </>
