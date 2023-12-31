@@ -43,7 +43,6 @@ function App() {
   const selectedRef = useRef(null);
   const modelLoaded = useRef(null);
 
-
   const runHandpose = async () => {
     
     const net = await handpose.load();
