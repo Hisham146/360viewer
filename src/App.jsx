@@ -235,7 +235,7 @@ function App() {
         setDirectionDecision("HandPose Model is Loading..");
       }
     }
-      
+          modelLoaded.current === "" 
          controlsRef.current.update(clock.getDelta());
          
         if (rendererRef.current && sceneRef.current && cameraRef.current) {
